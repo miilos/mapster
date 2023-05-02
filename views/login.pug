@@ -1,0 +1,37 @@
+doctype html
+html(lang="en")
+    head
+        include _head-tags
+        title #{title} | Mapster
+    body 
+        .zoom-prevent-wrapper 
+            include _header
+
+            section.signup 
+                .main-title__text
+                    figure.main-title__text-logo 
+                        img(class="pfp-img" src="./img/mapster-logo.png" alt="Mapster logo")
+                    .main-title__text-headers 
+                        h1.main-title__text-main-heading Welcome back! 
+                        h3.main-title__text-sub-heading Let's log you back in:
+
+                form.signup__form.login
+                    .signup__form-input-container 
+                        label(for='input-handle') Handle: 
+                        input(type="text" class="input" id="input-handle" required)
+
+                    .signup__form-input-container 
+                        label(for='input-password') Password: 
+                        input(type="password" class="input" id="input-password" required)
+
+                    .space-div 
+
+                    button(type="submit" class="btn btn-primary input-submit-btn login-btn") Log in!
+
+                    include _wave
+
+        .err
+            <i class="fa-solid fa-triangle-exclamation"></i>
+            p.err_text Error!
+
+        script(src="./js/bundle.js") 

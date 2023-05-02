@@ -1,0 +1,30 @@
+doctype html
+html(lang="en")
+    head
+        include _head-tags
+        title #{title} | Mapster
+    body
+        .zoom-prevent-wrapper 
+            include _header
+
+            section.likes 
+                h1.likes__header Likes 
+
+            section.posts 
+                each user in users 
+                    figure.post 
+                        .post__pfp-wrapper 
+                            figure.post__pfp 
+                                a(href=`/${user.handle}`)
+                                    img.pfp-img(src=`/img/${user.profilePic}` alt='Profile pic')
+
+                        .post__text-container 
+                            .post__content-top-profile
+                                .top-container-1
+                                    h3.handle= `${user.handle}`
+
+                                    -if(user.verified)
+                                        i.fa-solid.fa-circle-check.verified 
+
+                            .post__content-bottom
+                                p.post-text= `${user.bio}`

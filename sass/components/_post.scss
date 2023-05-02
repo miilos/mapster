@@ -1,0 +1,93 @@
+// This stylesheet and all the classes related to posts are also used to style accounts in the 'Near you' section
+
+.post {
+    padding: 1rem 1.5rem;
+    padding-left: 1rem;
+    border-bottom: .1rem solid $color-primary;
+
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+
+    &__pfp-wrapper {
+        width: 20%;
+    }
+
+    &__pfp {
+        height: 5rem;
+        width: 5rem;
+        border-radius: 50%;
+        overflow: hidden;
+        border: .2rem solid rgba(#fff, .1);
+    }
+
+    &__text-container {
+        width: 80%;
+        margin-top: .5rem;
+        
+        & > div {
+            margin-bottom: 1rem;
+        }
+    }
+
+    &__content-top {
+        display: flex;
+        align-items: center;
+        gap: .7rem;
+        
+        & > .verified {
+            font-size: 1.3rem;
+        }
+    }
+
+    .handle {
+        font-size: 1.4rem;
+    }
+    
+    .post-text {
+        font-size: 1.4rem;
+        line-height: 1.2;
+    }
+
+    &__interactions {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 1rem;
+
+        &__interaction-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: .5rem;
+
+            & > i {
+                font-size: 2rem;
+            }
+
+            & > .fa-comment {
+                color: $color-dark-1;
+            }
+        }
+    }
+}
+
+.liked {
+    color: $color-primary;
+}
+
+.post__content-top-profile {
+    display: flex;
+    justify-content: space-between;
+}
+
+.top-container-1 {
+    display: flex;
+    gap: 1rem;
+}
+
+.follow {
+    color: $color-primary;
+    text-decoration: underline;
+    margin-right: 0;
+}

@@ -1,0 +1,85 @@
+doctype html
+html(lang="en")
+    head
+        include _head-tags
+        title #{title} | Mapster
+    body 
+        .zoom-prevent-wrapper
+            include _header
+
+            figure.post.margin-top-small.main-post(data-id=`${post._id}`)
+                .post__pfp-wrapper 
+                    figure.post__pfp 
+                        a(href=`/${post.user.handle}`)
+                            img.pfp-img(src=`/img/${post.user.profilePic}` alt='Profile pic')
+
+                .post__text-container 
+                    .post__content-top 
+                        h3.handle= `${post.user.handle}`
+
+                        - if(post.user.verified)
+                            i.fa-solid.fa-circle-check.verified 
+                        
+                        p.post-text-p &bull;
+                        p.post-text-p= `${post.createdAt.toLocaleDateString('en-us')}`
+
+                    .post__content-bottom 
+                        p.post-text= `${post.text}`
+
+                .post__interactions 
+                    .post__interactions__interaction-container 
+                        
+                        - if(liked)
+                            i.fa-solid.fa-heart.like-btn.liked 
+
+                        - if(!liked)
+                            i.fa-regular.fa-heart.like-btn 
+
+                        p.post-text-p= `${post.numLikes}`
+
+                    .post__interactions__interaction-container
+                        i.fa-regular.fa-comment 
+                        p.post-text-p= `${post.numComments}`
+
+            section.divider 
+                .divider__item.divider__item--likes 
+                    h4 Likes 
+                    a(href=`/${post._id}/likes`)
+                        i.fa-solid.fa-chevron-right 
+                .comment-input
+                    .post__pfp-wrapper 
+                        figure.post__pfp 
+                            a(href=`/${loggedInUser.handle}`)
+                                img.pfp-img(src=`/img/${loggedInUser.profilePic}` alt='Profile pic')
+                    input.comment-input-text(type='text' placeholder='Share your thoughts...')
+                    button.btn-comment(type='submit') Post
+                .divider__item.divider__item--comments 
+                    h3.main-title__text-main-heading.font-small Comments 
+
+            section.comments 
+                each comment in post.comments
+                    figure.post.comment(data-id=`${comment._id}`)
+                        .post__pfp-wrapper 
+                            figure.post__pfp 
+                                a(href=`/${comment.user.handle}`)
+                                    img.pfp-img(src=`/img/${comment.user.profilePic}` alt='Profile pic')
+
+                        .post__text-container 
+                            .post__content-top 
+                                h3.handle= `${comment.user.handle}`
+
+                                - if(comment.user.verified)
+                                    i.fa-solid.fa-circle-check.verified 
+                                
+                                p.post-text-p &bull;
+                                p.post-text-p= `${comment.createdAt.toLocaleDateString('en-us')}`
+
+                            .post__content-bottom 
+                                p.post-text= `${comment.text}`
+
+                        .post__interactions 
+                            .post__interactions__interaction-container
+                                i.fa-regular.fa-heart.like-btn.comment-like
+                                p.post-text-p= `${comment.numLikes}`
+
+        script(src='/js/bundle.js') 

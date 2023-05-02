@@ -1,0 +1,16 @@
+.landing-content {
+    height: 70vh;
+    padding: 2rem 1rem;
+
+    display: flex;
+    align-items: center;
+}
+
+.buttons {
+    margin-top: 5rem;
+    text-align: center;
+
+    & a:first-child {
+        margin-right: 1.5rem;
+    }
+}

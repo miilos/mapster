@@ -1,0 +1,106 @@
+.profile-header {
+    height: 37vh;
+    background-color: $color-accent;
+    padding: 1rem;
+    position: relative;
+    z-index: 2;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    /* &__info {
+        height: 80%;
+        width: 100%;
+        padding: 0 2rem;
+        display: flex;
+        align-items: flex-end;
+        gap: 1.5rem;
+    } */
+
+    &__pfp {
+        width: 8rem;
+        height: 8rem;
+        border-radius: 50%;
+        overflow: hidden;
+        transform: translateY(.8rem);
+    }
+
+    &__data {
+        margin-top: 2rem;
+
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+
+        &-handle,
+        &-numbers {
+            color: $color-dark-1;
+            padding: .3rem;
+        }
+
+        &-handle {
+            width: max-content;
+            font-size: 2rem;
+            word-break: break-all;
+            position: relative;
+
+            display: flex;
+            align-items: center;
+            gap: .8rem;
+
+            &::before {
+                content: '';
+                width: 70%;
+                height: .3rem;
+                background-color: $color-primary;
+                position: absolute;
+                bottom: -.3rem;
+
+            }
+        }
+
+        &-bio {
+            &-text {
+                color: $color-dark-1;
+                line-height: 1.2;
+                font-size: 1.3rem;
+            }
+        }
+
+        &-numbers {
+            font-size: 1.4rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            z-index: 5;
+
+            & div {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            & div a {
+                font-size: 2rem;
+            }
+
+            & div p {
+                font-size: 1rem;
+            }
+        }
+    }
+}
+
+#wave {
+    position: absolute;
+    bottom: 0;
+    left: -2rem;
+    opacity: .3;
+    z-index: 1;
+}
+
+.verified {
+    font-size: 1.8rem;
+    color: $color-primary;
+}

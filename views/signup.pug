@@ -1,0 +1,52 @@
+doctype html
+html(lang="en")
+    head
+        include _head-tags
+        script(src='https://api.mapbox.com/mapbox-gl-js/v2.9.1/mapbox-gl.js')
+        link(href='https://api.mapbox.com/mapbox-gl-js/v2.9.1/mapbox-gl.css' rel='stylesheet')
+        title #{title} | Mapster
+    body 
+        .zoom-prevent-wrapper 
+            include _header
+
+            section.signup 
+                .main-title__text 
+                    figure.main-title__text-logo 
+                        img.pfp-img(src='./img/mapster-logo.png' alt='Mapster logo')
+                    .main-title__text-headers 
+                        h1.main-title__text-main-heading Sign up
+
+                form.signup__form(action='#' method='post')
+                    .signup__form-input-container 
+                        label(for='input-handle') Handle:
+                        input.input(type='text' id='input-handle')
+
+                    .signup__form-input-container 
+                        label(for='input-password') Password:
+                        input.input(type='password' id='input-password')
+
+                    .signup__form-input-container 
+                        label(for='input-password-confirm') Confirm password:
+                        input.input(type='password' id='input-password-confirm')
+                    
+                    .signup__form-input-container 
+                        label(for='input-bio') Bio:
+                        textarea#input-bio(name="", cols="30", rows="5")
+
+                    figure.input-map 
+                        p= 'Set your home location (you\'ll see people and posts within a 50km radius of this location)'
+                        #map
+
+                    .signup__form-input-container
+                        label(for='img-upload') Choose a profile pic:
+                        input.input-img(type='file', accept='image/*', name='profilePic' id='img-upload')
+
+                    button.btn.btn-primary.input-submit-btn(type='submit') Sign up!
+                    include _wave
+
+                .err
+                    <i class="fa-solid fa-triangle-exclamation"></i>
+                    p.err_text Error!
+
+    script(src='./js/bundle.js')
+    script(src='./js/mapbox.js')

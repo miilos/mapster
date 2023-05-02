@@ -1,0 +1,42 @@
+.post-input {
+    margin-top: 3rem;
+    padding: 0 2rem;
+    position: relative;
+
+    &__profile-preview {
+        display: flex;
+        align-items: flex-start;
+        gap: 1rem;
+
+        & .post__pfp {
+            width: 7rem;
+            height: 6.5rem;
+        }
+
+        & .post__content-top {
+            margin-top: .7rem;
+
+            & .handle {
+                font-size: 1.7rem;
+            }
+        }
+    }
+
+    & .btn {
+        margin-left: 25rem;
+    }
+
+    &__textarea {
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+        border: 1px solid $color-primary;
+        border-radius: 3px;
+        color: $color-dark-1;
+        font-family: $font-primary;
+        padding: 1rem;
+
+        &:focus {
+            outline: none;
+        }
+    }
+}

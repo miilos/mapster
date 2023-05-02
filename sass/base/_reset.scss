@@ -1,0 +1,29 @@
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    box-sizing: border-box;
+    font-size: 62.5%;
+    font-family: $font-primary;
+    font-weight: 500;
+    letter-spacing: .1rem;
+    color: $color-dark-1;
+}
+
+body {
+    background-color: #fff;
+}
+
+.zoom-prevent-wrapper {
+    overflow-x: hidden;
+}
+
+a:link,
+a:visited {
+    text-decoration: none;
+    color: $color-dark-1;
+}

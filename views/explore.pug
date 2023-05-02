@@ -1,0 +1,28 @@
+doctype html
+html(lang="en")
+    head
+        include _head-tags
+        title #{title} | Mapster
+    body 
+        .zoom-prevent-wrapper 
+            include _header
+
+            section.content-near 
+                section.content-near__header 
+                    h1.content-near__header-title Near you 
+
+                    .type-slider.explore-btns
+                        .type-slider__posts.type-slider__active.active__start.explore-btn
+                            h3 Posts
+                        .type-slider__posts.explore-btn
+                            h3 Following
+                        .type-slider__accounts.explore-btn
+                            h3 People
+
+                    .search-bar 
+                        input.search(type='text' placeholder='Search...')
+                        i.fa-solid.fa-magnifying-glass.search-icon
+
+                section.posts
+
+        script(src='/js/bundle.js') 

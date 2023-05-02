@@ -1,0 +1,28 @@
+.header {
+    height: 6vh;
+    background-color: $color-primary;
+    padding-left: 1rem;
+
+    display: flex;
+    align-items: center;
+    gap: .1rem;
+
+    &__logo {
+        width: 3.5rem;
+        height: 3.5rem;
+    }
+}
+
+.title {
+    width: max-content;
+    position: relative;
+
+    &::before {
+        content: '';
+        width: 70%;
+        height: .1rem;
+        background-color: $color-dark-1;
+        position: absolute;
+        bottom: -.2rem;
+    }
+}

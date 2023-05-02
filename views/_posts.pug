@@ -1,0 +1,24 @@
+mixin insertPost(post)
+    figure.post 
+        .post__pfp-wrapper 
+            .post__pfp
+                a(href='#')
+                    img.pfp-img(src=`./img/${user.profilePic}` alt='Profile pic')
+        
+        .post__text-container 
+            .post__content-top 
+                h3.handle= `${user.handle}`
+                - if(user.verified)
+                    i.fa-solid.fa-circle-check.verified
+                p.post-text-p &bull;
+                p.post-text-p= `${post.createdAt.toShortDateString()}`
+            .post__content-bottom 
+                p.post-text= `${post.text}`
+                
+        .post__interactions
+            .post__interactions__interaction-container 
+                i.fa-solid.fa-heart.liked
+                p.post-text-p= `${post.numLikes}`
+            .post__interactions__interaction-container 
+                i.fa-regular.fa-comment
+                p.post-text-p= `${post.numComments}`

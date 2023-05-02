@@ -1,0 +1,96 @@
+doctype html
+html(lang="en")
+    head
+        include _head-tags
+        title #{title} | Mapster
+    body
+        .zoom-prevent-wrapper
+            include _header
+
+            section.profile-info(data-id=`${user._id}`)
+                figure.profile-header 
+                    figure.profile-header__pfp 
+                        img.pfp-img(src=`./img/${user.profilePic}` alt='Profile pic')
+
+                    .profile-header__data 
+                        .profile-header__data-handle 
+                            h4= `${user.handle}`
+
+                            - if(user.verified)
+                                i.fa-solid.fa-circle-check.verified
+
+                        .profile-header__data-bio 
+                            p.profile-header__data-bio-text= `${user.bio}`
+
+                        .profile-header__data-numbers
+                            .profile-header__data-num-followers
+                                a(href=`${user._id}/followers`)= `${user.numFollowers}` 
+                                p followers
+                            .profile-header__data-num-following
+                                a(href=`${user._id}/following`)= `${user.numFollowing}`
+                                p following
+                            .profile-header__data-num-posts
+                                a= `${user.numPosts}` 
+                                p posts
+
+                            - if(!loggedInUser)
+                                - if(!followedByCurrUser)
+                                    button.btn.btn-secondary.follow-btn Follow
+                                - else 
+                                    button.btn.btn-secondary.follow-btn Unfollow
+
+                    include _wave
+
+            .profile-info__options
+                - if(loggedInUser)
+                    .profile-info__options-icon-container 
+                        a(href=`${user._id}/explore`)
+                            i.fa-solid.fa-location-dot
+                    .profile-info__options-icon-container 
+                        a(href='/post')
+                            i.fa-solid.fa-pen 
+                    .profile-info__options-icon-container 
+                        a(href='/settings')
+                            i.fa-solid.fa-gear
+
+            section.posts
+
+                - if(user.posts.length === 0)
+                    .no-posts 
+                        h3 Looks like there aren't any posts here yet...
+
+                - else
+                    each post in user.posts
+                        figure.post(data-id=`${post._id}`)
+                            .post__pfp-wrapper 
+                                .post__pfp
+                                    a(href='#')
+                                        img.pfp-img(src=`./img/${user.profilePic}` alt='Profile pic')
+                            
+                            .post__text-container 
+                                .post__content-top 
+                                    h3.handle= `${user.handle}`
+
+                                    - if(user.verified)
+                                        i.fa-solid.fa-circle-check.verified
+
+                                    p.post-text-p &bull;
+                                    p.post-text-p= `${post.createdAt.toLocaleDateString('en-us')}`
+                                .post__content-bottom 
+                                    p.post-text= `${post.text}`
+
+                            .post__interactions
+                                .post__interactions__interaction-container 
+
+                                    - if(likes.includes(post._id.toString()))
+                                        i.fa-solid.fa-heart.like-btn.liked
+
+                                    - if(!likes.includes(post._id.toString()))
+                                        i.fa-regular.fa-heart.like-btn
+
+                                    p.post-text-p.likes-count= `${post.numLikes}`
+                                .post__interactions__interaction-container 
+                                    i.fa-regular.fa-comment.comment-btn
+                                    p.post-text-p.comments-count= `${post.numComments}`
+
+        script(src='./js/bundle.js') 

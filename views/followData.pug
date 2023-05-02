@@ -1,0 +1,33 @@
+doctype html
+html(lang="en")
+    head
+        include _head-tags
+        title #{title} | Mapster
+    body
+        .zoom-prevent-wrapper
+            include _header
+
+            section.likes 
+                h1.likes__header= `${title}`
+
+            section.posts
+                -if(followData.length === 0)
+                    .no-posts 
+                        h3= `No ${title.toLowerCase()} yet :(`
+
+                each curr in followData
+                    figure.post 
+                        .post__pfp-wrapper 
+                            figure.post__pfp 
+                                a(href=`/${curr.handle}`)
+                                    img.pfp-img(src=`/img/${curr.profilePic}` alt='Profile pic')
+
+                        .post__text-container 
+                            .post__content-top 
+                                h3.handle= `${curr.handle}`
+
+                                -if(curr.verified)
+                                    i.fa-solid.fa-circle-check.verified
+
+                            .post__content-bottom 
+                                p.post-text= `${curr.bio}`

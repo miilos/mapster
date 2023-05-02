@@ -1,0 +1,32 @@
+.main-title {
+    &__text {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+
+        &-logo {
+            width: 7rem;
+            height: 7rem;
+        }
+
+        &-main-heading {
+            font-size: 3rem;
+            margin-bottom: .7rem;
+            width: max-content;
+            position: relative;
+
+            &::before {
+                content: '';
+                width: 70%;
+                height: .3rem;
+                background-color: $color-primary;
+                position: absolute;
+                bottom: -.3rem;
+            }
+        }
+
+        &-sub-heading {
+            margin-top: 1.5rem;
+        }
+    }
+}
