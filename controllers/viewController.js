@@ -9,13 +9,16 @@ const Follow = require('../models/followsModel')
 // render profile for logged in user
 const renderProfile = async (req, res, next) => {
     const token = await promisify(jwt.verify)(req.cookies.jwt, process.env.JWT_SECRET)
-    const user = await User.findById(token.id).select('-location -__v').populate({
-        path: 'posts',
-        select: '-location -__v',
-        options: {
-            sort: [ { 'createdAt': 'desc' } ]
-        }
-    })
+
+    if(token.id) {
+        const user = await User.findById(token.id).select('-location -__v').populate({
+            path: 'posts',
+            select: '-location -__v',
+            options: {
+                sort: [ { 'createdAt': 'desc' } ]
+            }
+        })
+    }
 
     const userLikes = (await Like.find({ user: user._id })).map(curr => curr.post.toString())
 
