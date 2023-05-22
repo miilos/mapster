@@ -65,7 +65,7 @@ module.exports = (err, req, res, next) => {
         let error = { ...err }
 
         if(error.name === 'CastError') error = handleCastErrorDB(error)
-        if(error.message.startsWith('E11000')) error = handleDuplicateFieldsDB(error)
+        // if(error.message.startsWith('E11000')) error = handleDuplicateFieldsDB(error)
         if(error._message === 'User validation failed') error = handleValidationErrorDB(error)
         /* if(error.name === 'JsonWebTokenError') error = handleJWTError()
         if(error.name === 'TokenExpiredError') error = handleJWTExpiredError() */
